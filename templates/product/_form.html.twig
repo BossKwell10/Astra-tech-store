@@ -1,0 +1,81 @@
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Information générale</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-1 col-form-label">Intitulé
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.name ) }}
+                    {{ form_errors(form.name) }}
+                </div>
+                <label class="col-md-1 col-form-label">Sous catég.
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.type) }}
+                    {{ form_errors(form.type) }}
+                </div>
+                <label class="col-md-1 col-form-label">Description</label>
+                <div class="col-md-3">
+                    {{ form_widget(form.detail) }}
+                    {{ form_errors(form.detail) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Tarification</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-1 col-form-label">Prix
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.price) }}
+                    {{ form_errors(form.price) }}
+                </div>
+                <label class="col-md-1 col-form-label">Stock dispo.
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.stock) }}
+                    {{ form_errors(form.stock) }}
+                </div>
+                <label class="col-md-1 col-form-label">Image
+                    <span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.image, {'attr': {'class': 'form-control form-control-sm'}}) }}
+                    {{ form_errors(form.image) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Détails Supplémentaires</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <div class="mb-3 row">
+                    <label class="col-md-2 col-form-label">Autres images
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="multiple-file-upload col-md-8">
+                        {{ form_widget(form.images, {'attr': {'class': 'form-control form-control-sm'}}) }}
+                        {{ form_errors(form.images) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

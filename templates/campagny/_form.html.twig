@@ -1,0 +1,105 @@
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Information générale</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-1 col-form-label">Intitulé<span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.name ) }}
+                    {{ form_errors(form.name) }}
+                </div>
+                <label class="col-md-1 col-form-label">Activités<span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.sector) }}
+                    {{ form_errors(form.sector) }}
+                </div>
+                <label class="col-md-1 col-form-label">Description</label>
+                <div class="col-md-3">
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Coordonnés</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-1 col-form-label">Addresse<span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.address ) }}
+                    {{ form_errors(form.address) }}
+                </div>
+                <label class="col-md-1 col-form-label">B. Postal<span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.postal) }}
+                    {{ form_errors(form.postal) }}
+                </div>
+                <label class="col-md-1 col-form-label">Téléphone<span class="text-danger">*</span>
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.contact) }}
+                    {{ form_errors(form.contact) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Service client</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div class="input-group col-md-4 mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="fab fa-whatsapp"></i>
+                </span>
+                {{ form_widget(form.whathsapp) }}
+                {{ form_errors(form.whathsapp) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group col-md-4 mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="fab fa-facebook"></i>
+                </span>
+                {{ form_widget(form.facebook) }}
+                {{ form_errors(form.facebook) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group col-md-4 mb-3">
+                <span class="input-group-text" id="basic-addon1">
+                  <i class="fab fa-tiktok"></i>
+                </span>
+                {{ form_widget(form.ticktok) }}
+                {{ form_errors(form.ticktok) }}
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Autres contact</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-1 col-form-label">Fax
+                </label>
+                <div class="col-md-3">
+                    {{ form_widget(form.services ) }}
+                    {{ form_errors(form.services) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+

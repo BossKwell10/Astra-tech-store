@@ -1,0 +1,56 @@
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Information générale</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-2 col-form-label">Nom Utilisateur
+                    <samp class="text-capitalize text-danger">*</samp>
+                </label>
+                <div class="col-md-8">
+                    {{ form_widget(form.username) }}
+                    {{ form_errors(form.username) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-2 col-form-label">Roles Utilisateur
+                    <samp class="text-capitalize text-danger">*</samp>
+                </label>
+                <div class="col-md-8">
+                    {{ form_widget(form.role) }}
+                    {{ form_errors(form.role) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-2 col-form-label"> Mot de Passe
+                    <samp class="text-capitalize text-danger">*</samp>
+                </label>
+                <div class="col-md-8">
+                    {{ form_widget(form.plainPassword.first) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-2 col-form-label">Confirmer mot de passe
+                    <samp class="text-capitalize text-danger">*</samp>
+                </label>
+                <div class="col-md-8">
+                    {{ form_widget(form.plainPassword.second) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

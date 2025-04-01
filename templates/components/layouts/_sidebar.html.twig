@@ -1,0 +1,188 @@
+<!--  BEGIN SIDEBAR  -->
+<div class="sidebar-wrapper sidebar-theme">
+
+    <nav id="sidebar">
+
+        <div class="navbar-nav theme-brand flex-row  text-center">
+            <div class="nav-logo">
+                <div class="nav-item theme-logo">
+                    <a href="{{ path('admin_home') }}">
+                        <img src="{{ asset('images/logo.jpg') }}" class="" alt="logo">
+                    </a>
+                </div>
+                <div class="nav-item theme-text">
+                    <a href="{{ path('admin_home') }}" class="nav-link">
+                        ACF COMPUTER ADMIN
+                    </a>
+                </div>
+            </div>
+            <div class="nav-item sidebar-toggle">
+                <div class="btn-toggle sidebarCollapse">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-chevrons-left">
+                        <polyline points="11 17 6 12 11 7"></polyline>
+                        <polyline points="18 17 13 12 18 7"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="shadow-bottom"></div>
+        <ul class="list-unstyled menu-categories ps ps--active-y" id="accordionExample">
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
+                <li class="menu active">
+                    <a href="{{ path('admin_home') }}" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i data-feather="activity"></i>
+                            <span>Tableau de bord</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu">
+                    <a href="#compagny" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa-solid fa-building"></i>
+                            <span>Entreprise</span>
+                        </div>
+                        <div>
+                            <i data-feather="chevron-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="compagny" data-bs-parent="#accordionExample">
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}
+                            <li class="">
+                                <a href="{{ path('app_campagny_new') }}">
+                                    Créer
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ path('app_campagny_index') }}">
+                                Modifier
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu">
+                    <a href="#user" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div>
+                            <i class="fa-solid fa-users"></i>
+                            <span>User</span>
+                        </div>
+                        <div>
+                            <i data-feather="chevron-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="user" data-bs-parent="#accordionExample">
+                        <li>
+                            <a href="{{ path('app_user_new') }}">
+                                Créer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_user_index') }}">
+                                Liste
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_GESTIONNAIRE') %}
+                <li class="menu">
+                    <a href="#type" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>Domaine</span>
+                        </div>
+                        <div>
+                            <i data-feather="chevron-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="type" data-bs-parent="#accordionExample">
+                        <li class="">
+                            <a href="{{ path('app_domaine_new') }}">
+                                Créer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_domaine_index') }}">
+                                Liste
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu">
+                    <a href="#categorie" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <i class="fa-solid fa-folder-blank"></i>
+                            <span>Catégorie</span>
+                        </div>
+                        <div>
+                            <i data-feather="chevron-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="categorie" data-bs-parent="#accordionExample">
+                        <li class="">
+                            <a href="{{ path('app_category_new') }}">
+                                Créer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_category_index') }}">
+                                Liste
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu">
+                    <a href="#sous-categorie" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div>
+                            <i class="fa-solid fa-folder-tree"></i>
+                            <span>Sous Catégorie</span>
+                        </div>
+                        <div>
+                            <i data-feather="chevron-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="sous-categorie" data-bs-parent="#accordionExample">
+                        <li>
+                            <a href="{{ path('app_type_new') }}">
+                                Créer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_type_index') }}">
+                                Liste
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu">
+                    <a href="#product" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div>
+                            <i class="fa-brands fa-product-hunt"></i>
+                            <span>Produit</span>
+                        </div>
+                        <div>
+                            <i data-feather="chevron-right"></i>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="product" data-bs-parent="#accordionExample">
+                        <li>
+                            <a href="{{ path('app_product_new') }}">
+                                Créer
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('app_product_index') }}">
+                                Liste
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+<!--  END SIDEBAR  -->

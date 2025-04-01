@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon entreprise
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title-custom">
+                        <i data-feather="list"></i>
+                        Mon entreprise
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered  table-condensed table-sm" id="basic">
+                        <thead class="table-light">
+                        <tr>
+                            <th class="text-center">Raison sociale</th>
+                            <th class="text-center">Secteur d'activité</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left">{{ compagny.name }}</td>
+                                <td class="text-left">{{ compagny.sector }}</td>
+                                <td class="text-left">{{ compagny.description }}</td>
+                                <td class="text-center">
+                                    <a href="{{ path('app_campagny_edit', {'id': compagny.id}) }}">
+                                        <i data-feather="edit"></i>
+                                    </a>
+                                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                        <a href="{{ path('app_campagny_delete', {'id': compagny.id}) }}">
+                                            <i data-feather="trash" class="mx-4" style="color: red"></i>
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {% if compagny is not defined %}
+                    <div class="card-footer">
+                        <a href="{{ path('app_campagny_new') }}" class="btn btn-dark float-end me-2" style="color: white">Nouveau</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

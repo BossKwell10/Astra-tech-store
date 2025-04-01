@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Utilisateur{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title-custom">
+                        <i data-feather="list"></i>
+                        Mes Utilisateurs
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered  table-condensed table-sm" id="basic">
+                        <thead class="table-light">
+                        <tr>
+                            <th class="text-center">Nom utilisateur</th>
+                            <th class="text-center">Type Utilisateur</th>
+                            <th class="text-center">Ajouté le</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td class="text-left">{{ user.username }}</td>
+                                <td class="text-center">
+                                    <span class="badge badge-enabled">{{ user.typeUser }}</span>
+                                </td>
+                                <td class="text-center">{{ user.createdAt|date('d/m/Y') }}</td>
+                                <td class="text-center">
+                                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">
+                                        <i data-feather="edit" class="me-4"></i>
+                                    </a>
+                                    <a href="{{ path('app_user_delete', {'id': user.id}) }}">
+                                        <i data-feather="trash" style="color: red"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('app_user_new') }}" class="btn btn-dark float-end me-2"
+                       style="color: white">Nouveau</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

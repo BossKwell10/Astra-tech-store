@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Produits{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title-custom">
+                        <i data-feather="list"></i>
+                        Mes Produits
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-condensed table-sm" id="basic">
+                        <thead class="table-light">
+                        <tr>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Sous catégorie</th>
+                            <th class="text-center">Nom produit</th>
+                            <th class="text-center">Prix</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Date création</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td class="text-center">
+                                    <span>
+                                        <img src="{{ asset('uploads/products/' ~ product.imageUrl) }}"
+                                             alt="Image de {{ product.name }}" width="24" height="24"
+                                             class="rounded profile-img"/>
+                                    </span>
+                                </td>
+                                <td class="text-left">{{ product.type.name }}</td>
+                                <td class="text-left">{{ product.name }}</td>
+                                <td class="text-end">{{ product.price|number_format(0,',',' ') }}</td>
+                                <td class="text-center">
+                                    {% if product.stock > 0 %}
+                                        <span class="badge badge-light-success">Stock disponible</span>
+                                    {% else %}
+                                        <span class="badge badge-light-danger">Stock non disponible</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">{{ product.createdAt|date('d/m/Y') }}</td>
+                                <td class="text-center">
+                                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">
+                                        <i data-feather="edit" class="me-4"></i>
+                                    </a>
+                                    <a href="{{ path('app_product_delete', {'id': product.id}) }}">
+                                        <i data-feather="trash" style="color: red"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('app_product_new') }}" class="btn btn-dark float-end me-2"
+                       style="color: white">Nouveau</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

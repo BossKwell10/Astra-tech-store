@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un produit{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title-custom">
+                        <i data-feather="list"></i>
+                        Modifier un produit
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {{ include('product/_form.html.twig') }}
+                </div>
+                <div class="card-footer">
+                    <button type="submit"
+                            class="btn btn-secondary float-end">{{ button_label|default('Enregistrer') }}</button>
+                    <a href="{{ path('app_product_index') }}" class="btn btn-info float-end me-2" style="color: white">Retour</a>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

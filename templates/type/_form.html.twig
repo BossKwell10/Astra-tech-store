@@ -1,0 +1,30 @@
+<fieldset>
+    <legend class="text-capitalize" style="font-size: 20px">Information générale</legend>
+    <hr>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-2 col-form-label">Désignation
+                    <samp class="text-capitalize text-danger">*</samp>
+                </label>
+                <div class="col-md-8">
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="mb-3 row">
+                <label class="col-md-2 col-form-label"> Categorie
+                    <samp class="text-capitalize text-danger">*</samp>
+                </label>
+                <div class="col-md-8">
+                    {{ form_widget(form.categorie) }}
+                    {{ form_errors(form.categorie) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
