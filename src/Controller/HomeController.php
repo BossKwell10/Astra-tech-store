@@ -4,11 +4,9 @@ namespace App\Controller;
 
 use App\Repository\Admin\CategoryRepository;
 use App\Repository\Admin\ProductRepository;
-use App\Repository\Admin\TypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class HomeController extends AbstractController
 {
@@ -19,11 +17,12 @@ final class HomeController extends AbstractController
     {
     }
 
-    #[Route('/home', name: 'home')]
+    #[Route('/boutique', name: 'boutique')]
     public function index(): Response
     {
+        $filters = $this->productRepository->findByFilters();
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'filters' => $filters,
         ]);
     }
 

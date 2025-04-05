@@ -29,15 +29,15 @@
         </div>
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories ps ps--active-y" id="accordionExample">
+            <li class="menu active">
+                <a href="{{ path('admin_home') }}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i data-feather="activity"></i>
+                        <span>Tableau de bord</span>
+                    </div>
+                </a>
+            </li>
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN') %}
-                <li class="menu active">
-                    <a href="{{ path('admin_home') }}" aria-expanded="false" class="dropdown-toggle">
-                        <div class="">
-                            <i data-feather="activity"></i>
-                            <span>Tableau de bord</span>
-                        </div>
-                    </a>
-                </li>
                 <li class="menu">
                     <a href="#compagny" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <div class="">

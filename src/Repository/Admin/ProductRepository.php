@@ -32,4 +32,16 @@ class ProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByFilters(): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->select([
+            'p.imageUrl as image_url',
+            'p.name as product_name',
+            'p.price as product_price',
+        ]);
+
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -66,7 +66,8 @@ import './src/plugins/src/table/datatable/button-ext/dataTables.buttons.min'
 import './src/plugins/src/table/datatable/datatables'
 import './src/plugins/src/font-icons/feather/feather.min'
 import "./src/plugins/src/sweetalerts2/sweetalerts2.min";
-import "./src/assets/js/widgets/modules-widgets.js"
+import "./src/assets/js/widgets/modules-widgets.js";
+//import "./js/collection";
 
 $('.select2').select2({width: '100%', theme: 'bootstrap'})
 /**
