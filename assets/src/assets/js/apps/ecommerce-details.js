@@ -1,5 +1,7 @@
-// Touch Sping
+import Splide from '@splidejs/splide';
+import GLightbox from 'glightbox';
 
+// Touch Sping
 $("input[name='demo1']").TouchSpin({
     min: 0,
     max: 100,

@@ -767,7 +767,7 @@
                 </div>
                 <!--  END BREADCRUMBS  -->
 
-                <div class="row layout-top-spacing layout-spacing"> {% block body %}{% endblock %}
+                <div class="row layout-top-spacing layout-spacing"> {% block body %}  {{ flasher.render() }}  {% endblock %}
                 </div>
             </div>
         </div>

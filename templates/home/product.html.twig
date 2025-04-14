@@ -1,0 +1,181 @@
+{% extends 'menu.html.twig' %}
+
+{% block title 'Detail du produit' %}
+
+{% block meta %}
+    <meta property="og:title" content="{{ product.name }}">
+    <meta property="og:description" content="{{ product.detail }}">
+    <meta property="og:image" content="{{ absolute_url(asset(product.imageUrl)) }}">
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:type" content="product">
+{% endblock %}
+
+{% block body %}
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+        <div class="widget-content widget-content-area br-8">
+            <div class="row justify-content-center">
+                <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-7 col-sm-9 col-12 pe-3" id="splider_Thumbnails">
+                    <div class="splide splide-mainThubnail mt-2" id="main-slider">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                {% for image in images %}
+                                    <li class="splide__slide">
+                                        <a href="{{ asset('uploads/products/' ~ image) }}"
+                                           class="glightbox">
+                                            <img src="{{ asset('uploads/products/' ~ image) }}"
+                                                 alt="slider-image"/>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="splide mb-2 mx-auto w-fit" id="thumbnail-slider" style="justify-content: center;">
+                        <div class="splide__track" style="padding-left: 0; padding-right: 0">
+                            <ul class="splide__list" style="transform: translateX(0px);">
+                                {% for thumbnail in images %}
+                                    <li class="splide__slide">
+                                        <img src="{{ asset('uploads/products/' ~ thumbnail) }}"
+                                             alt="{{ thumbnail }}"/>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-1 align-self-center">
+                    <div class="product-details-content">
+
+                        <span class="badge outline-badge-secondary mb-2 me-4">Boutique Officielle</span>
+
+                        <h3 class="product-title mb-0">{{ product.name|capitalize }}</h3>
+
+                        <hr class="mb-4">
+                        <div class="row">
+
+                            <div class="col-md-9 col-sm-9 col-9">
+                                <div class="pricing">
+                                    <span class="discounted-price">{{ product.price|number_format(0,',',' ') }} FCFA</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-3 text-end">
+                                <div class="product-share">
+                                    <button class="btn btn-light-success btn-icon btn-rounded _effect--ripple waves-effect waves-light">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-share-2">
+                                            <circle cx="18" cy="5" r="3"></circle>
+                                            <circle cx="6" cy="12" r="3"></circle>
+                                            <circle cx="18" cy="19" r="3"></circle>
+                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr class="mb-5 mt-4">
+
+                        <div class="action-button text-center">
+
+                            <div class="row text-center">
+
+                                <!-- WhatsApp -->
+                                <div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
+                                    <a href="https://wa.me/2250777746234?text={{ ('Bonjour, je suis intéressé par ce produit : ' ~ absolute_url(path('product_detail', { id: product.id }))) | url_encode }}"
+                                       class="btn btn-sm btn-success w-100 btn-lg _effect--ripple waves-effect waves-light"
+                                       target="_blank"
+                                       title="Discuter avec nous sur WhatsApp">
+                                        <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                                    </a>
+                                </div>
+
+                                <!-- TikTok -->
+                                <div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
+                                    <a href="https://www.tiktok.com/@your_username" target="_blank"
+                                       class="btn btn-sm btn-dark w-100 btn-lg _effect--ripple waves-effect waves-light">
+                                        <i class="fab fa-tiktok me-2"></i> TikTok
+                                    </a>
+                                </div>
+
+                                <!-- Facebook -->
+                                <div class="col-xxl-4 col-xl-4 col-sm-4">
+                                    <a href="https://www.facebook.com/your_page" target="_blank"
+                                       class="btn btn-sm btn-primary w-100 btn-lg _effect--ripple waves-effect waves-light">
+                                        <i class="fab fa-facebook-f me-2"></i> Facebook
+                                    </a>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="secure-info mt-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="feather feather-shield">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            <p>Paiements sûrs et sécurisés. Retours faciles. Produits 100% authentiques.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+
+        <div class="widget-content widget-content-area br-8">
+
+            <div class="production-descriptions simple-pills">
+
+                <div class="pro-des-content">
+
+                    <div id="iconsAccordion" class="accordion-icons accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne3">
+                                <section class="mb-0 mt-0">
+                                    <div role="menu" class="collapsed" data-bs-toggle="collapse"
+                                         data-bs-target="#iconAccordionOne" aria-expanded="false"
+                                         aria-controls="iconAccordionOne">
+                                        <div class="accordion-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-shopping-bag">
+                                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                            </svg>
+                                        </div>
+                                        Details supplémentaires
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div id="iconAccordionOne" class="collapse" aria-labelledby="headingOne3"
+                                 data-bs-parent="#iconsAccordion">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="mb-4">{{ product.detail }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+

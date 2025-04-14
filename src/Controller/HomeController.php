@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Admin\Product;
 use App\Repository\Admin\CategoryRepository;
 use App\Repository\Admin\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,6 +24,21 @@ final class HomeController extends AbstractController
         $filters = $this->productRepository->findByFilters();
         return $this->render('home/index.html.twig', [
             'filters' => $filters,
+        ]);
+    }
+
+    #[Route('/boutique/product/{id}', name: 'product_detail')]
+    public function showProduct(Product $product): Response
+    {
+        $imageList = [$product->getImageUrl()]; // commence par l’image principale
+
+        foreach ($product->getImages() as $productImage) {
+            $imageList[] = $productImage->getImageUrl();
+        }
+
+        return $this->render('home/product.html.twig', [
+            'product' => $product,
+            'images' => $imageList,
         ]);
     }
 

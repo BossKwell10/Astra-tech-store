@@ -37,6 +37,7 @@ class ProductRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('p');
         $qb->select([
+            'p.id as product_id',
             'p.imageUrl as image_url',
             'p.name as product_name',
             'p.price as product_price',
