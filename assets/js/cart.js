@@ -1,23 +1,18 @@
+const inputField = document.getElementById("t-text");
 
-$(function() {
+if (inputField) {
+    const productContainer = document.getElementById("product-container");
+    const productItems = productContainer.getElementsByClassName("product-item");
+    inputField.addEventListener("input", function () {
+        const query = inputField.value.toLowerCase();
 
-    $("#btnShowModal").on("click", function () {
-        $('#paymentModal').modal('show');
+        for (let i = 0; i < productItems.length; i++) {
+            const productName = productItems[i].getAttribute("data-name");
+            if (productName.includes(query)) {
+                productItems[i].style.display = ""; // Afficher l'élément
+            } else {
+                productItems[i].style.display = "none"; // Masquer l'élément
+            }
+        }
     });
-    
-
-    $("#amountRecu").on("input", function () {
-    const amount = +$('#amount').val(); 
-    const amountRecu = +$(this).val();  
-    const amountReste = amountRecu - amount;
-
-    if(amountReste < 0){
-        $('.invalid-feedback').css('display', 'block');
-    }else{
-        $('.invalid-feedback').css('display', 'none');
-    }
-    
-    $('#amountReste').val(amountReste); 
-});
-
-});
+}

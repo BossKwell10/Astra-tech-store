@@ -2,14 +2,6 @@
 
 {% block title 'Detail du produit' %}
 
-{% block meta %}
-    <meta property="og:title" content="{{ product.name }}">
-    <meta property="og:description" content="{{ product.detail }}">
-    <meta property="og:image" content="{{ absolute_url(asset(product.imageUrl)) }}">
-    <meta property="og:url" content="{{ app.request.uri }}">
-    <meta property="og:type" content="product">
-{% endblock %}
-
 {% block body %}
     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
         <div class="widget-content widget-content-area br-8">
@@ -83,35 +75,36 @@
 
                             <div class="row text-center">
 
+                                {% set productUrl = absolute_url(path('product_detail', {'id': product.id})) %}
+                                {% set imageUrl = absolute_url(asset('uploads/products/' ~ product.imageUrl)) %}
+                                {% set message = 'Bonjour, je suis intéressé par ce produit ! 🛍️' ~ '\n\n📄 Voir le produit : ' ~ productUrl ~ '\n🖼️ Image : ' ~ imageUrl %}
                                 <!-- WhatsApp -->
                                 <div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
-                                    <a href="https://wa.me/2250777746234?text={{ ('Bonjour, je suis intéressé par ce produit : ' ~ absolute_url(path('product_detail', { id: product.id }))) | url_encode }}"
+                                    <a href="https://wa.me/225{{ entreprise.entreprise.whathsapp }}?text={{ message | url_encode }}"
                                        class="btn btn-sm btn-success w-100 btn-lg _effect--ripple waves-effect waves-light"
                                        target="_blank"
                                        title="Discuter avec nous sur WhatsApp">
-                                        <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                                        <i class="fab fa-whatsapp me-2"></i> Service Client WhatsApp
                                     </a>
                                 </div>
 
                                 <!-- TikTok -->
                                 <div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
-                                    <a href="https://www.tiktok.com/@your_username" target="_blank"
+                                    <a href="https://www.tiktok.com/@{{ entreprise.entreprise.ticktok }}" target="_blank"
                                        class="btn btn-sm btn-dark w-100 btn-lg _effect--ripple waves-effect waves-light">
-                                        <i class="fab fa-tiktok me-2"></i> TikTok
+                                        <i class="fab fa-tiktok me-2"></i>Service Client TikTok
                                     </a>
                                 </div>
 
                                 <!-- Facebook -->
                                 <div class="col-xxl-4 col-xl-4 col-sm-4">
-                                    <a href="https://www.facebook.com/your_page" target="_blank"
+                                    <a href="https://www.facebook.com/messages/t/{{ entreprise.entreprise.facebook }}" target="_blank"
                                        class="btn btn-sm btn-primary w-100 btn-lg _effect--ripple waves-effect waves-light">
-                                        <i class="fab fa-facebook-f me-2"></i> Facebook
+                                        <i class="fab fa-facebook-f me-2"></i>Service Client Facebook
                                     </a>
                                 </div>
 
                             </div>
-
-
                         </div>
 
                         <div class="secure-info mt-4">

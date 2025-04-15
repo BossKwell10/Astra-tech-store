@@ -61,10 +61,12 @@ global.feather = feather;
 feather.replace();
 
 import TouchSpin from './src/plugins/src/bootstrap-touchspin/jquery.bootstrap-touchspin.min';
+
 global.TouchSpin = TouchSpin;
 
 
 import Swal from 'sweetalert2';
+
 global.Swal = Swal;
 
 
@@ -81,6 +83,7 @@ import './src/plugins/src/table/datatable/datatables';
 import './src/plugins/src/font-icons/feather/feather.min';
 import './src/plugins/src/sweetalerts2/sweetalerts2.min';
 import './src/assets/js/widgets/modules-widgets.js';
+import './js/cart'
 
 $('.select2').select2({width: '100%', theme: 'bootstrap'});
 
@@ -134,50 +137,53 @@ import {runInputmask} from './js/inputmask';
 runInputmask();
 
 
-
 import GLightbox from "glightbox";
 import Splide from '@splidejs/splide';
 
-var main = new Splide('.splide-mainThubnail', {
-    type: 'slide',
-    heightRatio: 0.5,
-    pagination: false,
-    arrows: false,
-    cover: true,
-    direction: 'rtl',
-    //fixedWidth: 656,
-    fixedHeight: 556,
-});
+if ($('.splide-mainThubnail').length) {
+    var main = new Splide('.splide-mainThubnail', {
+        type: 'slide',
+        heightRatio: 0.5,
+        pagination: false,
+        arrows: false,
+        cover: true,
+        direction: 'rtl',
+        //fixedWidth: 656,
+        fixedHeight: 556,
+    });
 
-var thumbnails = new Splide('#thumbnail-slider', {
-    rewind: true,
-    fixedWidth: 104,
-    fixedHeight: 58,
-    isNavigation: true,
-    gap: 10,
-    focus: 'center',
-    pagination: false,
-    cover: true,
-    direction: 'rtl',
-    dragMinThreshold: {
-        mouse: 4,
-        touch: 10,
-    },
-    breakpoints: {
-        640: {
-            fixedWidth: 66,
-            fixedHeight: 38,
+    var thumbnails = new Splide('#thumbnail-slider', {
+        rewind: true,
+        fixedWidth: 104,
+        fixedHeight: 58,
+        isNavigation: true,
+        gap: 10,
+        focus: 'center',
+        pagination: false,
+        cover: true,
+        direction: 'rtl',
+        dragMinThreshold: {
+            mouse: 4,
+            touch: 10,
         },
-    },
-});
+        breakpoints: {
+            640: {
+                fixedWidth: 66,
+                fixedHeight: 38,
+            },
+        },
+    });
 
 // Sync them after mounting
-main.mount();
-thumbnails.mount();
-main.sync(thumbnails);
+    main.mount();
+    thumbnails.mount();
+    main.sync(thumbnails);
 
-const lightbox = GLightbox({
-    selector: '.glightbox',
-    touchNavigation: true,
-    loop: true,
-});
+    const lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+    });
+}
+
+
