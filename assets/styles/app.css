@@ -6,3 +6,22 @@ body {
     background-color: #ff7b54;
     color: white;
 }
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .product-title {
+    min-height: 40px; /* ou une hauteur qui convient à deux lignes de texte */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

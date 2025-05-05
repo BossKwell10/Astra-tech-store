@@ -6,6 +6,7 @@ use App\Entity\Admin\Product;
 use App\Repository\Admin\CategoryRepository;
 use App\Repository\Admin\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -22,8 +23,10 @@ final class HomeController extends AbstractController
     public function index(): Response
     {
         $filters = $this->productRepository->findByFilters();
+        $categories = $this->categoryRepository->findAll();
         return $this->render('home/index.html.twig', [
             'filters' => $filters,
+            'categories' => $categories
         ]);
     }
 
@@ -60,4 +63,24 @@ final class HomeController extends AbstractController
             'dash' => $dash,
         ]);
     }
+
+    #[Route('/produits', name: 'produits_liste')]
+    public function liste(Request $request, ProductRepository $repo): Response
+    {
+        $filtres = $request->query->all();
+        $produits = $repo->findWithFilters($filtres);
+        $categories = $this->categoryRepository->findAll();
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->render('home/_liste.html.twig', [
+                'filters' => $produits
+            ]);
+        }
+
+        return $this->render('home/index.html.twig', [
+            'filters' => $produits,
+            'categories' => $categories
+        ]);
+    }
+
 }

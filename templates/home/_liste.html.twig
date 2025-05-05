@@ -1,0 +1,32 @@
+{% for filter in filters %}
+    <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4 product-item"
+         data-name="{{ filter.product_name|lower }}">
+        <a class="card style-6" href="{{ path('product_detail', {'id' : filter.product_id}) }}">
+            <span class="badge badge-primary">NEW</span>
+            <img src="{{ asset('uploads/products/' ~ filter.image_url) }}" class="card-img-top" alt="..." height="200">
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <b>{{ filter.product_name }}</b>
+                    </div>
+                    <div class="col-3">
+                        <div class="badge--group">
+                            <div class="badge badge-primary badge-dot"></div>
+                            <div class="badge badge-danger badge-dot"></div>
+                            <div class="badge badge-info badge-dot"></div>
+                        </div>
+                    </div>
+                    <div class="col-9 text-end">
+                        <div class="pricing d-flex justify-content-end">
+                            <p class="text-success mb-0">
+                                XOF {{ filter.product_price|number_format(0,',',' ') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+{% else %}
+    <p class="text-center">Aucun produit trouvé.</p>
+{% endfor %}
+

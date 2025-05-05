@@ -78,7 +78,6 @@ import './layouts/vertical-light-menu/app';
 import './src/plugins/src/apex/apexcharts.min';
 import './src/assets/js/dashboard/dash_2';
 import 'select2/dist/js/select2.full';
-import './src/plugins/src/table/datatable/button-ext/dataTables.buttons.min';
 import './src/plugins/src/table/datatable/datatables';
 import './src/plugins/src/font-icons/feather/feather.min';
 import './src/plugins/src/sweetalerts2/sweetalerts2.min';
@@ -107,22 +106,6 @@ $('#basic').DataTable({
     },
     responsive: true,
     url: "//cdn.datatables.net/plug-ins/2.2.2/i18n/fr-FR.json",
-    buttons: [
-        'copy',
-        {
-            extend: 'excel',
-        },
-        {
-            extend: 'pdf',
-            messageBottom: null,
-            orientation: 'landscape'
-        },
-        {
-            extend: 'print',
-            messageBottom: null,
-            title: ''
-        }
-    ],
     "stripeClasses": [],
     "lengthMenu": [5, 10, 20, 50],
     "pageLength": 5

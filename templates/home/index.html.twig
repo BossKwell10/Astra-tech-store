@@ -4,42 +4,154 @@
 {% endblock %}
 
 {% block body %}
-        <div class="row layout-top-spacing">
-            <div class="col-lg-3 col-md-3 col-sm-3 mb-4">
-                <input id="t-text" type="text" name="txt" placeholder="Recherche rapide" class="form-control"
-                       required="">
-            </div>
+    <div class="row layout-top-spacing">
+        <div class="col-lg-3 col-md-3 col-sm-3 mb-4">
+            <input id="search-text" type="text" name="txt" placeholder="Recherche rapide" class="form-control"
+                   required="">
         </div>
-        <div class="row" id="product-container">
-            {% for filter in filters %}
-                <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4 product-item"
-                     data-name="{{ filter.product_name|lower }}">
-                    <a class="card style-6" href="{{ path('product_detail', {'id' : filter.product_id}) }}">
-                        <span class="badge badge-primary">NEW</span>
-                        <img src="{{ asset('uploads/products/' ~ filter.image_url) }}" class="card-img-top" alt="..."
-                             height="200">
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-12 mb-4">
-                                    <b>{{ filter.product_name }}</b>
+
+        <!-- Filtre par catégorie  -->
+        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 mb-4 ms-auto">
+            <select name="cat" class="form-select form-select" aria-label="Default select example" id="categorie">
+                <option selected="">Toutes categories</option>
+                {% for categorie in categories %}
+                    <option value="{{ categorie.id }}">{{ categorie.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Filtre prix  -->
+        <div class="col-lg-2 col-md-3 col-sm-6 mb-4">
+            <input type="number" name="prix_min" id="prix_min" class="form-control" placeholder="Prix min">
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 mb-4">
+            <input type="number" name="prix_max" id="prix_max" class="form-control" placeholder="Prix max">
+        </div>
+
+        <!-- Tri -->
+        <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 mb-4">
+            <select class="form-select form-select" aria-label="Default select example" id="tri">
+                <option selected="">Trier par</option>
+                <option value="prix_asc">Prix croissant</option>
+                <option value="prix_desc">Prix décroissant</option>
+                <option value="date">Date d'ajout</option>
+            </select>
+        </div>
+
+        <!-- Bouton de filtre -->
+        <div class="col-lg-2 col-md-3 col-sm-6 mb-4">
+            <button id="btn-filtrer" class="btn btn-primary w-100">Filtrer</button>
+        </div>
+    </div>
+    <div class="row" id="product-container">
+        {% for filter in filters %}
+            <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4 product-item"
+                 data-name="{{ filter.product_name|lower }}">
+                <a class="card style-6" href="{{ path('product_detail', {'id' : filter.product_id}) }}">
+                    <span class="badge badge-primary">NEW</span>
+                    <img src="{{ asset('uploads/products/' ~ filter.image_url) }}" class="card-img-top" alt="..."
+                         height="200">
+                    <div class="card-footer d-flex flex-column justify-content-between">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <b class="product-title d-block">{{ filter.product_name }}</b>
+                            </div>
+                            <div class="col-3">
+                                <div class="badge--group">
+                                    <div class="badge badge-primary badge-dot"></div>
+                                    <div class="badge badge-danger badge-dot"></div>
+                                    <div class="badge badge-info badge-dot"></div>
                                 </div>
-                                <div class="col-3">
-                                    <div class="badge--group">
-                                        <div class="badge badge-primary badge-dot"></div>
-                                        <div class="badge badge-danger badge-dot"></div>
-                                        <div class="badge badge-info badge-dot"></div>
-                                    </div>
-                                </div>
-                                <div class="col-9 text-end">
-                                    <div class="pricing d-flex justify-content-end">
-                                        <p class="text-success mb-0">
-                                            XOF {{ filter.product_price|number_format(0,',',' ') }}</p>
-                                    </div>
+                            </div>
+                            <div class="col-9 text-end">
+                                <div class="pricing d-flex justify-content-end">
+                                    <p class="text-success mb-0">
+                                        XOF {{ filter.product_price|number_format(0,',',' ') }}</p>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+                    </div>
+                </a>
+            </div>
+
+        {% endfor %}
+        <button id="scrollToTop" title="Remonter" class="btn btn-primary rounded-circle shadow"
+                style="position: fixed; bottom: 100px; right: 30px; display: none; z-index: 999;">
+            ↑
+        </button>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        function debounce(func, delay) {
+            let timer;
+            return function (...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
+        const debouncedFetch = debounce(fetchProduits, 1000);
+
+
+        function fetchProduits() {
+            const value = document.getElementById('categorie');
+            const categorie = value.options[value.selectedIndex].value;
+            const prix_min = document.getElementById('prix_min').value;
+            const prix_max = document.getElementById('prix_max').value;
+            const tri = document.getElementById('tri').value;
+            const search = document.getElementById('search-text').value;
+
+            const params = new URLSearchParams({
+                categorie,
+                prix_min,
+                prix_max,
+                tri,
+                search
+            });
+
+            fetch('{{ path("produits_liste") }}?' + params.toString(), {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('product-container').innerHTML = html;
+                });
+        }
+
+        document.getElementById('categorie').addEventListener('change', fetchProduits);
+        document.getElementById('prix_min').addEventListener('input', debouncedFetch);
+        document.getElementById('prix_max').addEventListener('input', debouncedFetch);
+        document.getElementById('tri').addEventListener('change', fetchProduits);
+        document.getElementById('search-text').addEventListener('keyup', function (e) {
+            if (e.key === 'Enter') {
+                fetchProduits();
+            }
+        });
+
+        const scrollBtn = document.getElementById('scrollToTop');
+
+        // Afficher le bouton après un certain scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollBtn.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+
+        // Scroll vers le haut en douceur
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+
 {% endblock %}

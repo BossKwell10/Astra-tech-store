@@ -41,17 +41,10 @@
                     {{ form_widget(form.price) }}
                     {{ form_errors(form.price) }}
                 </div>
-                <label class="col-md-1 col-form-label">Stock dispo.
-                    <span class="text-danger">*</span>
-                </label>
-                <div class="col-md-3">
-                    {{ form_widget(form.stock) }}
-                    {{ form_errors(form.stock) }}
-                </div>
                 <label class="col-md-1 col-form-label">Image
                     <span class="text-danger">*</span>
                 </label>
-                <div class="col-md-3">
+                <div class="col-md-7">
                     {{ form_widget(form.image, {'attr': {'class': 'form-control form-control-sm'}}) }}
                     {{ form_errors(form.image) }}
                 </div>
@@ -70,7 +63,7 @@
                     <label class="col-md-2 col-form-label">Autres images
                         <span class="text-danger">*</span>
                     </label>
-                    <div class="multiple-file-upload col-md-8">
+                    <div class="multiple-file-upload col-md-10">
                         {{ form_widget(form.images, {'attr': {'class': 'form-control form-control-sm'}}) }}
                         {{ form_errors(form.images) }}
                     </div>

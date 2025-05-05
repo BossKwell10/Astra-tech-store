@@ -48,9 +48,6 @@ class ProductType extends AbstractType
             ->add('price', TextType::class, [
                 'attr' => ['class' => 'form-control form-control-sm separator text-end'],
             ])
-            ->add('stock', TextType::class, [
-                'attr' => ['class' => 'form-control form-control-sm separator text-end'],
-            ])
             ->add('detail', TextareaType::class, [
                 'attr' => ['class' => 'form-control form-control-sm'],
             ])
