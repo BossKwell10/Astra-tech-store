@@ -15,4 +15,17 @@ class TypeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Type::class);
     }
+
+    public function findCategories(): ?array
+    {
+        return $this->createQueryBuilder('t')
+            ->select([
+                'c.name as category_name',
+            ])
+            ->join('t.categorie', 'c')
+            ->groupBy('c.name')
+            ->getQuery()
+            ->getResult();
+    }
+
 }

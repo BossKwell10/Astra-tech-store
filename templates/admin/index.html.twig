@@ -5,20 +5,20 @@
 
 {% block body %}
     {% if is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') %}
-        {% for admin in dash %}
+        {% for d in dash %}
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                <div class="widget widget-card-four">
+                <div class="widget widget-card-four animate__animated animate__bounceInDown animate__delay-1s">
                     <div class="widget-content">
                         <div class="w-header">
                             <div class="w-info">
-                                <h6 class="value">{{ admin.name }}(s) <span class="badge badge-light-success mb-2 me-4">stock disponible</span>
+                                <h6 class="value">{{ d.category_name }}
                                 </h6>
                             </div>
                         </div>
 
                         <div class="w-content">
                             <div class="w-info">
-                                <p class="value">{{ admin.total_products }}<span> Produits</span>
+                                <p class="value">{{ d.product_count }}<span> Produits</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                          stroke-linejoin="round" class="feather feather-trending-up">

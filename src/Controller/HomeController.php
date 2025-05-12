@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Admin\Product;
 use App\Repository\Admin\CategoryRepository;
 use App\Repository\Admin\ProductRepository;
+use App\Repository\Admin\TypeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,7 @@ final class HomeController extends AbstractController
     public function __construct(
         private readonly CategoryRepository $categoryRepository,
         private readonly ProductRepository  $productRepository,
+        private readonly TypeRepository     $typeRepository,
     )
     {
     }
@@ -55,10 +57,15 @@ final class HomeController extends AbstractController
     public function adminIndex(): Response
     {
         $dash = [];
-        $categories = $this->categoryRepository->findAll();
+        $categories = $this->typeRepository->findCategories();
         foreach ($categories as $category) {
-            $dash = $this->productRepository->findBySomeField($category->getId());
+            $product_counter = $this->productRepository->findCountByFilters($category['category_name']);
+            $dash[] = [
+                'category_name' => $category['category_name'],
+                'product_count' => $product_counter,
+            ];
         }
+
         return $this->render('admin/index.html.twig', [
             'dash' => $dash,
         ]);

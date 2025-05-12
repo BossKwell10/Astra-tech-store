@@ -17,22 +17,6 @@ class ProductRepository extends ServiceEntityRepository
     }
 
 
-    public function findBySomeField(int $value): ?array
-    {
-        return $this->createQueryBuilder('p')
-            ->select([
-                'COUNT(p.id) as total_products',
-                'c.name',
-            ])
-            ->join('p.type', 'type')
-            ->join('type.categorie', 'c')
-            ->where('c.id = :categorie_id')
-            ->andWhere('p.stock > 0')
-            ->setParameter('categorie_id', $value)
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findByFilters(): array
     {
         $qb = $this->createQueryBuilder('p');
@@ -97,6 +81,19 @@ class ProductRepository extends ServiceEntityRepository
         }
 
         return $qb->getQuery()->getResult();
+    }
+
+    public function findCountByFilters(string $category): int
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select([
+                'count(p.id) as product_number',
+            ])
+            ->join('p.type', 'type')
+            ->join('type.categorie', 'c');
+        $qb->andWhere('c.name = :category')
+            ->setParameter('category', $category);
+        return $qb->getQuery()->getSingleScalarResult();
     }
 
 }

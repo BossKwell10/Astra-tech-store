@@ -6,7 +6,7 @@ services:
     image: phpmyadmin
     restart: always
     ports:
-      - "3000:80"
+      - "3007:80"
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=database

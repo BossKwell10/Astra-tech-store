@@ -4,50 +4,439 @@
 {% endblock %}
 
 {% block body %}
+    <!-- CAROUSEL COMPLET -->
+    <div class="position-relative w-100 overflow-hidden" style="max-height: 630px;">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
 
-	<div class="container" style="max-width: 1440px;">
-		<div class="col-lg-12 col-md-12 mb-5 p-0">
-			<div id="style1" class="carousel slide style-custom-1" data-bs-ride="carousel">
-				<div class="carousel-inner items-center">
-					<div class="carousel-item active">
-						<img class="d-block w-100 slide-image" src="{{ asset("images/ordinateur-portable.jpg") }}" alt="First slide" height="630" width="1000">
-						<div class="carousel-caption d-none d-sm-block">
-							<h3 style="color: #fafafa;">Une sélection d'ordinateur portable pour le travail, l'étudiant ou le gaming</h3>
-							<button class="badge outline-badge-secondary mb-2 me-4">Découvrez !</button>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100 slide-image" src="{{ asset("images/peripherique.jpg") }}" alt="Second slide" height="630" width="1000">
-						<div class="carousel-caption">
-							<div class="carousel-caption d-none d-sm-block">
-								<h3 style="color: #fafafa;">Nous proposons une large gamme de périphérique dont les claviers, souris et autres équipements complémentaires
-								</h3>
-								<button class="badge outline-badge-secondary mb-2 me-4">Découvrez !</button>
-							</div>
-						</div>
-					</div>
+            <!-- Dots -->
+            <div class="position-absolute bottom-0 start-50 translate-middle-x z-3 d-flex gap-2 mb-3">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+                        class="rounded-circle bg-white border-0" style="width: 12px; height: 12px;" aria-current="true"
+                        aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                        class="rounded-circle bg-white bg-opacity-50 border-0" style="width: 12px; height: 12px;"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                        class="rounded-circle bg-white bg-opacity-50 border-0" style="width: 12px; height: 12px;"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+                        class="rounded-circle bg-white bg-opacity-50 border-0" style="width: 12px; height: 12px;"
+                        aria-label="Slide 4"></button>
+            </div>
 
-					<div class="carousel-item">
-						<img class="d-block w-100 slide-image" src="{{ asset("images/accessoire.jpg") }}" alt="Third slide" height="630" width="1000">
-						<div class="carousel-caption">
-							<div class="carousel-caption d-none d-sm-block">
-								<h3 style="color: #fafafa;">Nous proposons des asseccoires tel que des sacs d'ordinateur, des supports ergonomiques et pleins d'autres accessoires
-								</h3>
-								<button class="badge outline-badge-secondary mb-2 me-4">Découvrez !</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#style1" role="button" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#style1" role="button" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</a>
-			</div>
-		</div>
-	</div>
+            <!-- Slides -->
+            <div class="carousel-inner w-100" style="height: 630px;">
+
+                <!-- SLIDE 1 : Accueil ACF Computer -->
+                <div class="carousel-item active position-relative w-100 h-100">
+                    <img src="{{ asset('images/moderne.jpg') }}"
+                         class="object-fit-cover w-100 h-100 brightness-75 zoom-effect pulse-effect"
+                         alt="Ordinateurs portables">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                        <div class="position-relative w-100 h-100">
+                            <div class="position-absolute top-0 start-0 w-100 h-100"
+                                 style="background: linear-gradient(to right, #facc15, #fde68a); opacity: 0.1;"></div>
+                            <div class="container position-relative py-4 d-flex flex-column align-items-center justify-content-center text-center">
+                                <h1 class="display-4 fw-bold mb-4 mt-5 animate__animated animate__fadeInDownBig animate__delay-2s">
+                                    Bienvenue chez <span class="text-primary text-opacity-100">ACF COMPUTER</span>
+                                </h1>
+                                <p class="lead text-light mb-5 animate__animated animate__fadeInRight animate__delay-2s" style="max-width: 700px;">
+                                    Votre partenaire de confiance pour tous vos besoins en équipements informatiques et
+                                    accessoires technologiques de haute qualité.
+                                </p>
+                                <div class="d-flex flex-column flex-sm-row gap-3 animate__animated animate__fadeInBottomLeft animate__delay-2s">
+                                    <a href="/produits"
+                                       class="btn btn-rounded btn-warning text-black fw-semibold px-4 py-2">
+                                        Découvrir nos produits
+                                    </a>
+                                    <a href="/contact" class="btn btn-primary btn-rounded fw-semibold px-4 py-2">
+                                        Nous contacter
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2 : Ordinateurs Portables -->
+                <div class="carousel-item position-relative w-100 h-100">
+                    <img src="{{ asset('images/ordinateur-portable.jpg') }}"
+                         class="object-fit-cover w-100 h-100 brightness-75 zoom-effect" alt="Ordinateurs portables">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center text-white p-4">
+                        <h2 class="display-4 fw-bold mb-4">Ordinateurs Portables</h2>
+                        <p class="lead mb-4" style="max-width: 700px;">Une sélection pour le travail, les étudiants ou
+                            le gaming.</p>
+                        <a href="/produits" class="btn btn-rounded btn-warning text-black fw-semibold px-4 py-2">
+                            Découvrir
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3 : Périphériques -->
+                <div class="carousel-item position-relative w-100 h-100">
+                    <img src="{{ asset('images/peripherique.jpg') }}"
+                         class="object-fit-cover w-100 h-100 brightness-75 zoom-effect" alt="Périphériques">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center text-white p-4">
+                        <h2 class="display-4 fw-bold mb-4">Périphériques</h2>
+                        <p class="lead mb-4" style="max-width: 700px;">Claviers, souris et équipements complémentaires
+                            de qualité.</p>
+                        <a href="/produits" class="btn btn-rounded btn-warning text-black fw-semibold px-4 py-2">
+                            Découvrir
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4 : Accessoires -->
+                <div class="carousel-item position-relative w-100 h-100">
+                    <img src="{{ asset('images/accessoire.jpg') }}"
+                         class="object-fit-cover w-100 h-100 brightness-75 zoom-effect" alt="Accessoires">
+
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center text-white p-4">
+                        <h2 class="display-4 fw-bold mb-4">Accessoires</h2>
+                        <p class="lead mb-4" style="max-width: 700px;">Sacs, supports ergonomiques et d'autres
+                            accessoires utiles.</p>
+                        <a href="/produits" class="btn btn-rounded btn-warning text-black fw-semibold px-4 py-2">
+                            Découvrir
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Arrows -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                <span class="visually-hidden">Précédent</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                <span class="visually-hidden">Suivant</span>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- About section -->
+    <div class="position-relative w-100 overflow-hidden" style="max-height: 630px;">
+        <section class="mt-5 mx-auto p-3 transition-theme" id="mainSection">
+            <div class="row g-4 align-items-center">
+
+                <!-- Colonne gauche : À propos -->
+                <div class="col-12 col-lg-6" data-aos="fade-up">
+                    <div class="p-3 p-md-4 rounded-4 shadow-sm bg-white transition-theme text-dark card-hover"
+                         id="aboutCard">
+                        <h2 class="h3 fw-bold mb-3 text-blanc">
+                            À Propos de ACF COMPUTER
+                        </h2>
+                        <p class="fs-5 mb-3 text-secondary">
+                            ACF COMPUTER est une entreprise spécialisée dans la vente d'ordinateurs, d'équipements
+                            informatiques et d'accessoires technologiques de haute qualité. <br>
+                            Nous nous engageons à offrir à nos clients une gamme diversifiée de produits adaptés aux
+                            besoins professionnels et personnels.
+                        </p>
+                        <a href="/#services" class="btn btn-primary btn-sm d-inline-flex align-items-center">
+                            En savoir plus
+                            <i class="fas fa-chevron-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Colonne droite : Mission -->
+                <div class="col-12 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-3 p-md-4 rounded-4 shadow-sm bg-white transition-theme text-dark card-hover"
+                         id="missionCard">
+                        <h3 class="h4 fw-bold mb-3 text-blanc">
+                            Notre Mission
+                        </h3>
+                        <p class="fs-5 text-secondary">
+                            Notre mission est de rendre les technologies de pointe accessibles à tous. Nous croyons
+                            que l'informatique est un outil essentiel pour réussir dans le monde d'aujourd'hui.
+                            Ainsi, nous proposons des produits de qualité supérieure accompagnés de conseils
+                            personnalisés pour vous aider à faire le meilleur choix.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Nos Produits -->
+    <section class="bg-white p-5 mt-5">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-bold mb-3 text-blanc">Nos Produits</h2>
+                <p class="lead text-secondary mx-auto" style="max-width: 700px;">
+                    Nous proposons une large gamme de produits : ordinateurs portables, périphériques, accessoires et
+                    composants informatiques.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Produit 1 -->
+                <div class="col-12 col-md-6 col-lg-3 animate__animated animate__backInRight">
+                    <div class="card h-100 border-0 shadow rounded-4 hover-scale transition">
+                        <div class="ratio ratio-4x3 bg-light dark-bg-dark d-flex align-items-center justify-content-center">
+                            <img src="/images/hero-1.jpg" class="card-img-top object-fit-cover"
+                                 alt="Ordinateurs Portables">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-semibold text-dark dark-text-white">Ordinateurs Portables</h5>
+                            <p class="card-text text-muted dark-text-light small flex-grow-1">
+                                Une sélection d'ordinateurs pour le travail, les études ou le gaming.
+                            </p>
+                            <a href="/produits" class="btn btn-warning mt-auto fw-semibold text-dark">Voir les
+                                produits</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 2 -->
+                <div class="col-12 col-md-6 col-lg-3 animate__animated animate__backInRight">
+                    <div class="card h-100 border-0 shadow rounded-4 hover-scale transition">
+                        <div class="ratio ratio-4x3 bg-light dark-bg-dark d-flex align-items-center justify-content-center">
+                            <img src="/images/hero-2.jpg" class="card-img-top object-fit-cover" alt="Périphériques">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-semibold text-dark dark-text-white">Périphériques</h5>
+                            <p class="card-text text-muted dark-text-light small flex-grow-1">
+                                Claviers, souris, moniteurs, imprimantes et autres équipements complémentaires.
+                            </p>
+                            <a href="/produits" class="btn btn-warning mt-auto fw-semibold text-dark">Voir les
+                                produits</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 3 -->
+                <div class="col-12 col-md-6 col-lg-3 animate__animated animate__backInRight">
+                    <div class="card h-100 border-0 shadow rounded-4 hover-scale transition">
+                        <div class="ratio ratio-4x3 bg-light dark-bg-dark d-flex align-items-center justify-content-center">
+                            <img src="/images/hero-5.jpg" class="card-img-top object-fit-cover" alt="Accessoires">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-semibold text-dark dark-text-white">Accessoires</h5>
+                            <p class="card-text text-muted dark-text-light small flex-grow-1">
+                                Sacs d'ordinateur, protections d'écran, supports ergonomiques, etc.
+                            </p>
+                            <a href="/produits" class="btn btn-warning mt-auto fw-semibold text-dark">Voir les
+                                produits</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 4 -->
+                <div class="col-12 col-md-6 col-lg-3 animate__animated animate__backInRight">
+                    <div class="card h-100 border-0 shadow rounded-4 hover-scale transition">
+                        <div class="ratio ratio-4x3 bg-light dark-bg-dark d-flex align-items-center justify-content-center">
+                            <img src="/images/moderne.jpg" class="card-img-top object-fit-cover" alt="Composants">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-semibold text-dark dark-text-white">Composants</h5>
+                            <p class="card-text text-muted dark-text-light small flex-grow-1">
+                                Cartes mères, processeurs, cartes graphiques, mémoire RAM, et plus encore.
+                            </p>
+                            <a href="/produits" class="btn btn-warning mt-auto fw-semibold text-dark">Voir les
+                                produits</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="{{ path('produits_liste') }}" class="btn btn-dark text-dark dark-btn-light fw-semibold px-4 py-2 rounded-4 transition">
+                    Voir tous nos produits
+                </a>
+            </div>
+    </section>
+
+    <!-- Nos Services -->
+    <section class="container py-5 mt-5">
+        <h1 class="text-center fw-bold mb-4 display-5 text-blanc">Nos Services</h1>
+        <p class="text-center mb-5 fs-5 mx-auto text-secondary" style="max-width: 700px;">
+            Chez ACF COMPUTER, nous offrons une gamme complète de services pour vous accompagner dans votre expérience informatique.
+        </p>
+
+        <div class="row g-4">
+            <!-- Service 1 -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm border-0 hover-shadow transition" style="transition: transform 0.3s;">
+                    <div class="card-body d-flex align-items-start gap-3">
+                        <div class="text-primary flex-shrink-0">
+                            <i class="bi bi-headset text-primary fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold mb-2">Conseils Personnalisés</h5>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <p class="card-text fs-6">
+                            Nous aidons nos clients à choisir les produits les mieux adaptés à leurs besoins. Notre équipe d'experts est là pour vous guider dans votre choix.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm border-0 hover-shadow transition" style="transition: transform 0.3s;">
+                    <div class="card-body d-flex align-items-start gap-3">
+                        <div class="text-primary flex-shrink-0">
+                            <i class="bi bi-gear-fill text-primary fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold mb-2">Service Après-Vente</h5>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <p class="card-text fs-6">
+                            Un support technique dédié pour l'entretien, la réparation et l'assistance à l'installation des produits. Nous sommes là pour vous aider à chaque étape.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm border-0 hover-shadow transition" style="transition: transform 0.3s;">
+                    <div class="card-body d-flex align-items-start gap-3">
+                        <div class="text-primary flex-shrink-0">
+                            <i class="bi bi-credit-card-2-front-fill text-primary fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold mb-2">Financement</h5>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <p class="card-text fs-6">
+                            Des solutions de paiement échelonné pour faciliter l'acquisition de matériel informatique. Nous proposons des options flexibles adaptées à votre budget.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Avantages -->
+    <section class="py-5 mt-5 bg-white">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3 display-6 text-blanc">Nos Avantages</h2>
+            <p class="fs-5 mx-auto text-secondary" style="max-width: 700px;">
+                Pourquoi choisir ACF COMPUTER ? Découvrez ce qui nous distingue.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Avantage 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-start gap-3 p-4 border rounded-3 shadow-sm h-100 hover-raise">
+                    <div class="text-primary flex-shrink-0">
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2 text-blanc">Expertise Technique</h5>
+                        <p class="text-muted fs-6 mb-0">
+                            Une équipe de professionnels qualifiés pour vous conseiller.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avantage 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-start gap-3 p-4 border rounded-3 shadow-sm h-100 hover-raise">
+                    <div class="text-primary flex-shrink-0">
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2 text-blanc">Produits Certifiés</h5>
+                        <p class="text-muted fs-6 mb-0">
+                            Nous ne proposons que des produits issus de grandes marques et répondant aux normes de qualité.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avantage 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-start gap-3 p-4 border rounded-3 shadow-sm h-100 hover-raise">
+                    <div class="text-primary flex-shrink-0">
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2 text-blanc">Service Client de Qualité</h5>
+                        <p class="text-muted fs-6 mb-0">
+                            Une relation client basée sur l'écoute, la disponibilité et la réactivité.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avantage 4 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-start gap-3 p-4 border rounded-3 shadow-sm h-100 hover-raise">
+                    <div class="text-primary flex-shrink-0">
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2 text-blanc">Expérience d'Achat Agréable</h5>
+                        <p class="text-muted fs-6 mb-0">
+                            Chaque client est accompagné du début à la fin de son parcours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avantage 5 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-start gap-3 p-4 border rounded-3 shadow-sm h-100 hover-raise">
+                    <div class="text-primary flex-shrink-0">
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2 text-blanc">Produits Fiables</h5>
+                        <p class="text-muted fs-6 mb-0">
+                            Des produits testés et approuvés pour une utilisation durable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Avantage 6 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-start gap-3 p-4 border rounded-3 shadow-sm h-100 hover-raise">
+                    <div class="text-primary flex-shrink-0">
+                        <i class="bi bi-check-circle-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-2 text-blanc">Service Professionnel</h5>
+                        <p class="text-muted fs-6 mb-0">
+                            Un service client attentif et professionnel pour répondre à toutes vos questions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Découvrez nos produits -->
+    <section class="py-5 mt-5">
+        <div class="rounded-4 p-5 p-md-5 text-center d-flex flex-column align-items-center shadow-sm hover-shadow animate-fade-in">
+            <h2 class="fw-bold mb-4 display-6 text-blanc">Prêt à Découvrir Nos Produits ?</h2>
+            <p class="text-secondary fs-5 mb-5" style="max-width: 700px;">
+                Que vous soyez un particulier à la recherche d'un ordinateur portable fiable ou une entreprise ayant besoin
+                d'un équipement informatique complet, ACF COMPUTER répond à toutes vos attentes avec des solutions innovantes
+                et performantes.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3">
+                <a href="{{ path("produits_liste") }}" class="btn btn-warning btn-lg px-4">
+                    Découvrir nos produits
+                </a>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
