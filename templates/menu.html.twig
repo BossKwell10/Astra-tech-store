@@ -894,6 +894,32 @@
                 }
             }
 
+            .marquee-wrapper {
+                overflow: hidden;
+                position: relative;
+            }
+
+            .marquee-content {
+                display: flex;
+                gap: 1rem;
+                animation: scroll-left 30s linear infinite;
+            }
+
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(0%);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+
+            /* Dupliquer les cartes pour une boucle fluide */
+            .marquee-content > .row {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+
         </style>
     {% endblock %}
 </head>
@@ -1035,7 +1061,7 @@
             }
         });
     }
-    toggleDarkMode()
+    toggleDarkMode();
 </script>
 </body>
 </html>

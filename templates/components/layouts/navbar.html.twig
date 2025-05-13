@@ -7,22 +7,28 @@
                 </a>
             </li>
             <li class="nav-item theme-text">
-                <a href="{{ path('hero') }}" class="nav-link"> {{ entreprise.entreprise.name|upper }} </a>
+                <a href="{{ path('hero') }}" class="nav-link" style="color: yellow"> {{ entreprise.entreprise.name|upper }} </a>
             </li>
         </ul>
 
         <div class="d-flex align-items-center gap-4">
             {% if entreprise.entreprise.address %}
                 <div class="d-flex align-items-center gap-2">
-                    <i class="fas fa-map-marker-alt" style="font-size: 20px; color: #555;"></i>
+                    <i class="fas fa-map-marker-alt" style="font-size: 20px; color: yellow"></i>
                     <span class="text-white small">{{ entreprise.entreprise.address }}</span>
                 </div>
             {% endif %}
 
             {% if entreprise.entreprise.address %}
                 <div class="d-flex align-items-center gap-2">
-                    <i class="fas fa-phone-alt" style="font-size: 20px; color: #555;"></i>
+                    <i class="fas fa-phone-alt" style="font-size: 20px; color: yellow;"></i>
                     <span class="text-white small">{{ entreprise.entreprise.contact }}</span>
+                </div>
+            {% endif %}
+            {% if entreprise.entreprise.services %}
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fas fa-envelope" style="font-size: 20px; color: yellow;"></i>
+                    <span class="text-white small">{{ entreprise.entreprise.services }}</span>
                 </div>
             {% endif %}
         </div>
