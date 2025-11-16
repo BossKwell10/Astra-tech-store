@@ -50,6 +50,9 @@ class Product
     #[ORM\OneToMany(targetEntity: ProductImage::class, mappedBy: 'product', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $images;
 
+    #[ORM\OneToOne(mappedBy: 'product', cascade: ['persist', 'remove'])]
+    private ?ProductDetail $productDetail = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -170,6 +173,28 @@ class Product
                 $image->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProductDetail(): ?ProductDetail
+    {
+        return $this->productDetail;
+    }
+
+    public function setProductDetail(?ProductDetail $productDetail): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($productDetail === null && $this->productDetail !== null) {
+            $this->productDetail->setProduct(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($productDetail !== null && $productDetail->getProduct() !== $this) {
+            $productDetail->setProduct($this);
+        }
+
+        $this->productDetail = $productDetail;
 
         return $this;
     }

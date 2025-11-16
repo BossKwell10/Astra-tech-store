@@ -4,18 +4,20 @@
     <nav id="sidebar">
 
         <div class="navbar-nav theme-brand flex-row  text-center">
-            <div class="nav-logo">
-                <div class="nav-item theme-logo">
-                    <a href="{{ path('admin_home') }}">
-                        <img src="{{ asset('images/logo.jpg') }}" class="" alt="logo">
-                    </a>
+            {% if entreprise.entreprise %}
+                <div class="nav-logo">
+                    <div class="nav-item theme-logo">
+                        <a href="{{ path('admin_home') }}">
+                            <img src="{{ asset('images/logo.jpg') }}" class="" alt="logo">
+                        </a>
+                    </div>
+                    <div class="nav-item theme-text">
+                        <a href="{{ path('admin_home') }}" class="nav-link">
+                            {{ entreprise.entreprise.name }} ADMIN
+                        </a>
+                    </div>
                 </div>
-                <div class="nav-item theme-text">
-                    <a href="{{ path('admin_home') }}" class="nav-link">
-                        {{ entreprise.entreprise.name }} ADMIN
-                    </a>
-                </div>
-            </div>
+            {% endif %}
             <div class="nav-item sidebar-toggle">
                 <div class="btn-toggle sidebarCollapse">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none"

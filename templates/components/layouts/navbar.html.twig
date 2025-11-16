@@ -1,14 +1,17 @@
 <div class="header-container">
     <header class="header navbar navbar-expand-sm expand-header">
         <ul class="navbar-item theme-brand flex-row  text-center">
-            <li class="nav-item theme-logo">
-                <a href="#">
-                    <img src="{{ asset('images/logo.jpg') }}" class="" alt="">
-                </a>
-            </li>
-            <li class="nav-item theme-text">
-                <a href="{{ path('hero') }}" class="nav-link" style="color: #E8BA27"> {{ entreprise.entreprise.name|upper }} </a>
-            </li>
+            {% if entreprise %}
+                <li class="nav-item theme-logo">
+                    <a href="#">
+                        <img src="{{ asset('images/logo.jpg') }}" class="" alt="">
+                    </a>
+                </li>
+                <li class="nav-item theme-text">
+                    <a href="{{ path('hero') }}" class="nav-link" style="color: #E8BA27"> {{ entreprise.entreprise.name|upper }} </a>
+                </li>
+            {% endif %}
+
         </ul>
 
         <div class="d-flex align-items-center gap-4">

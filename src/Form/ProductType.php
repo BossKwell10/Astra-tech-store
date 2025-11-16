@@ -103,7 +103,10 @@ class ProductType extends AbstractType
                         ]),
                     ])
                 ],
-            ]);
+            ])
+            ->add('productDetail', ProductDetailType::class, [
+                'label' => false,
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -13,7 +13,7 @@ security:
     backend_user:
       memory:
         users:
-          admin_supp: { password: '$2y$13$QQsXxMeACvlzV4/7l54RLeFDnrt6rMekM2yQWCAqh5nel3HaDGfjO', roles: [ 'ROLE_SUPER_ADMIN' ] }
+          admin_supp: { password: '$2y$13$dfJuylj034bAtpKPxEj3hO.O3wzkw55MguQOZLafldmRADPqhW1JC', roles: [ 'ROLE_SUPER_ADMIN' ] }
     all_users:
       chain:
         providers: [ 'app_user_provider', 'backend_user' ]

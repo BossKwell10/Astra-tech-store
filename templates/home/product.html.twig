@@ -3,172 +3,360 @@
 {% block title 'Detail du produit' %}
 
 {% block body %}
-    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
-        <div class="widget-content widget-content-area br-8">
-            <div class="row justify-content-center">
-                <div class="col-xxl-5 col-xl-6 col-lg-7 col-md-7 col-sm-9 col-12 pe-3" id="splider_Thumbnails">
-                    <div class="splide splide-mainThubnail mt-2" id="main-slider">
-                        <div class="splide__track">
-                            <ul class="splide__list">
-                                {% for image in images %}
-                                    <li class="splide__slide">
-                                        <a href="{{ asset('uploads/products/' ~ image) }}"
-                                           class="glightbox">
-                                            <img src="{{ asset('uploads/products/' ~ image) }}"
-                                                 alt="slider-image"/>
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="splide mb-2 mx-auto w-fit" id="thumbnail-slider" style="justify-content: center;">
-                        <div class="splide__track" style="padding-left: 0; padding-right: 0">
-                            <ul class="splide__list" style="transform: translateX(0px);">
-                                {% for thumbnail in images %}
-                                    <li class="splide__slide">
-                                        <img src="{{ asset('uploads/products/' ~ thumbnail) }}"
-                                             alt="{{ thumbnail }}"/>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-1 align-self-center">
-                    <div class="product-details-content">
+	<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+		<div class="widget-content widget-content-area br-8">
+			<div class="row justify-content-center">
+				<div class="col-xxl-5 col-xl-6 col-lg-5 col-md-5 col-sm-7 col-12 pe-3" id="splider_Thumbnails">
+					<div class="splide splide-mainThubnail mt-2" id="main-slider">
+						<div class="splide__track">
+							<ul class="splide__list">
+								{% for image in images %}
+									<li class="splide__slide">
+										<a href="{{ asset('uploads/products/' ~ image) }}" class="glightbox">
+											<img src="{{ asset('uploads/products/' ~ image) }}" alt="slider-image"/>
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="splide mb-2 mx-auto w-fit" id="thumbnail-slider" style="justify-content: center;">
+						<div class="splide__track" style="padding-left: 0; padding-right: 0">
+							<ul class="splide__list" style="transform: translateX(0px);">
+								{% for thumbnail in images %}
+									<li class="splide__slide">
+										<img src="{{ asset('uploads/products/' ~ thumbnail) }}" alt="{{ thumbnail }}"/>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-1 align-self-center">
+					<div class="product-details-content">
 
-                        <span class="badge outline-badge-secondary mb-2 me-4">Boutique Officielle</span>
+						<span class="badge outline-badge-secondary mb-2 me-4">Boutique Officielle</span>
+						<span class="badge outline-badge-danger mb-2 me-4">Nouvelle Arrivage</span>
 
-                        <h3 class="product-title mb-0">{{ product.name|capitalize }}</h3>
+						<h3 class="product-title mb-0">{{ product.name|capitalize }}</h3>
 
-                        <hr class="mb-4">
-                        <div class="row">
+						{% if product.productDetail %}
+							<hr class="mb-4">
+							<ul>
+								<li>{{ product.detail }}</li>
+								<li>
+									<strong>Type de produit :</strong>
+									{{ product.type|capitalize }}</li>
+								<li>
+									<strong>Marque :</strong>
+									{{ product.productDetail.marque|capitalize }}</li>
+								<li>
+									<strong>Processeur :</strong>
+									{{ product.productDetail.processeur|capitalize }}</li>
+								<li>
+									<strong>RAM :</strong>
+									{{ product.productDetail.ram|capitalize }}</li>
+								<li>
+									<strong>Stockage :</strong>
+									{{ product.productDetail.stockage|capitalize }}</li>
+								<li>
+									<strong>Taille de l’écran :</strong>
+									{{ product.productDetail.tailleEcran|capitalize }}</li>
+								<li>
+									<strong>Fournis avec :</strong>
+									{{ product.productDetail.fournisAvec|capitalize }}</li>
+								<li>
+									<strong>Garantie 6 mois</strong>
+								</li>
+							</ul>
 
-                            <div class="col-md-9 col-sm-9 col-9">
-                                <div class="pricing">
-                                    <span class="discounted-price">{{ product.price|number_format(0,',',' ') }} FCFA</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-3 text-end">
-                                <div class="product-share">
-                                    <button class="btn btn-light-success btn-icon btn-rounded _effect--ripple waves-effect waves-light">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-share-2">
-                                            <circle cx="18" cy="5" r="3"></circle>
-                                            <circle cx="6" cy="12" r="3"></circle>
-                                            <circle cx="18" cy="19" r="3"></circle>
-                                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
+						{% endif %}
+						<hr class="mb-4">
 
-                        </div>
+						<div class="row">
 
-                        <hr class="mb-5 mt-4">
+							<div class="col-md-9 col-sm-9 col-9">
+								<div class="pricing">
+									<h2 class="discounted-price">{{ product.price|number_format(0,',',' ') }}
+										FCFA</h2>
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-3 text-end">
+								<div class="product-share">
+									<button class="btn btn-light-success btn-icon btn-rounded _effect--ripple waves-effect waves-light">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2">
+											<circle cx="18" cy="5" r="3"></circle>
+											<circle cx="6" cy="12" r="3"></circle>
+											<circle cx="18" cy="19" r="3"></circle>
+											<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+											<line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+										</svg>
+									</button>
+								</div>
+							</div>
 
-                        <div class="action-button text-center">
+						</div>
 
-                            <div class="row text-center">
+						<hr class="mb-5 mt-4">
 
-                                {% set productUrl = absolute_url(path('product_detail', {'id': product.id})) %}
-                                {% set imageUrl = absolute_url(asset('uploads/products/' ~ product.imageUrl)) %}
-                                {% set message = 'Bonjour, je suis intéressé par ce produit ! 🛍️' ~ '\n\n📄 Voir le produit : ' ~ productUrl ~ '\n🖼️ Image : ' ~ imageUrl %}
-                                <!-- WhatsApp -->
-                                <div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
-                                    <a href="https://wa.me/225{{ entreprise.entreprise.whathsapp }}?text={{ message | url_encode }}"
-                                       class="btn btn-sm btn-success w-100 btn-lg _effect--ripple waves-effect waves-light"
-                                       target="_blank"
-                                       title="Discuter avec nous sur WhatsApp">
-                                        <i class="fab fa-whatsapp me-2"></i> Service Client WhatsApp
-                                    </a>
-                                </div>
+						<div class="action-button text-center">
 
-                                <!-- TikTok -->
-                                <div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
-                                    <a href="https://www.tiktok.com/@{{ entreprise.entreprise.ticktok }}" target="_blank"
-                                       class="btn btn-sm btn-dark w-100 btn-lg _effect--ripple waves-effect waves-light">
-                                        <i class="fab fa-tiktok me-2"></i>Service Client TikTok
-                                    </a>
-                                </div>
+							<div class="row">
 
-                                <!-- Facebook -->
-                                <div class="col-xxl-4 col-xl-4 col-sm-4">
-                                    <a href="https://www.facebook.com/messages/t/{{ entreprise.entreprise.facebook }}" target="_blank"
-                                       class="btn btn-sm btn-primary w-100 btn-lg _effect--ripple waves-effect waves-light">
-                                        <i class="fab fa-facebook-f me-2"></i>Service Client Facebook
-                                    </a>
-                                </div>
+								{% set productUrl = absolute_url(path('product_detail', {'id': product.id})) %}
+								{% set imageUrl = absolute_url(asset('uploads/products/' ~ product.imageUrl)) %}
+								{% set message = 'Bonjour, je suis intéressé par ce produit ! 🛍️' ~ '\n\n📄 Voir le produit : ' ~ productUrl ~ '\n🖼️ Image : ' ~ imageUrl %}
+								<!-- WhatsApp -->
+								<div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
+									<a href="https://wa.me/225{{ entreprise.entreprise.whathsapp }}?text={{ message | url_encode }}" class="btn btn-success btn-lg d-flex align-items-center justify-content-center gap-2
+																																																																						          _effect--ripple waves-effect waves-light" target="_blank" title="Discuter avec nous sur WhatsApp">
 
-                            </div>
-                        </div>
+										<i class="fab fa-whatsapp"></i>
+										<span class="">COMMANDER</span>
 
-                        <div class="secure-info mt-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="feather feather-shield">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            </svg>
-                            <p>Paiements sûrs et sécurisés. Retours faciles. Produits 100% authentiques.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+									</a>
 
-    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+								</div>
 
-        <div class="widget-content widget-content-area br-8">
+								<!-- TikTok -->
+								<div class="col-xxl-4 col-xl-4 col-sm-4 mb-sm-0 mb-3">
+									<a href="https://www.tiktok.com/@{{ entreprise.entreprise.ticktok }}" class="btn btn-black btn-lg d-flex align-items-center justify-content-center gap-2
+																																																																						          _effect--ripple waves-effect waves-light" target="_blank">
 
-            <div class="production-descriptions simple-pills">
+										<i class="fab fa-tiktok"></i>
+										<span class="">COMMANDER</span>
 
-                <div class="pro-des-content">
+									</a>
+								</div>
 
-                    <div id="iconsAccordion" class="accordion-icons accordion">
-                        <div class="card">
-                            <div class="card-header" id="headingOne3">
-                                <section class="mb-0 mt-0">
-                                    <div role="menu" class="collapsed" data-bs-toggle="collapse"
-                                         data-bs-target="#iconAccordionOne" aria-expanded="false"
-                                         aria-controls="iconAccordionOne">
-                                        <div class="accordion-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                 stroke-linecap="round" stroke-linejoin="round"
-                                                 class="feather feather-shopping-bag">
-                                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                                <path d="M16 10a4 4 0 0 1-8 0"></path>
-                                            </svg>
-                                        </div>
-                                        Details supplémentaires
-                                    </div>
-                                </section>
-                            </div>
+								<!-- Facebook -->
+								<div class="col-xxl-4 col-xl-4 col-sm-4">
+									<a href="https://www.facebook.com/messages/t/{{ entreprise.entreprise.facebook }}" class="btn btn-primary btn-lg d-flex align-items-center justify-content-center gap-2
+																																																																						          _effect--ripple waves-effect waves-light" target="_blank">
 
-                            <div id="iconAccordionOne" class="collapse" aria-labelledby="headingOne3"
-                                 data-bs-parent="#iconsAccordion">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="mb-4">{{ product.detail }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+										<i class="fab fa-facebook-f"></i>
+										<span class="">COMMANDER</span>
 
-        </div>
+									</a>
+								</div>
 
-    </div>
+							</div>
+						</div>
+
+						<div class="secure-info mt-4">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield">
+								<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+							</svg>
+							<p>Paiements sûrs et sécurisés. Retours faciles. Produits 100% authentiques.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% if product.productDetail %}
+		<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-4">
+			<div class="widget-content widget-content-area br-8">
+
+				<div class="production-descriptions simple-pills">
+					<div class="pro-des-content">
+
+						<div id="iconsAccordion" class="accordion-icons accordion">
+
+							<div class="card">
+
+								<div class="card-header" id="headingOne3">
+									<section class="mb-0 mt-0">
+										<div role="menu" class="collapsed d-flex align-items-center gap-2" data-bs-toggle="collapse" data-bs-target="#iconAccordionOne" aria-expanded="false" aria-controls="iconAccordionOne">
+
+											<div class="accordion-icon">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag">
+													<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+													<line x1="3" y1="6" x2="21" y2="6"></line>
+													<path d="M16 10a4 4 0 0 1-8 0"></path>
+												</svg>
+											</div>
+
+											<span class="fw-bold">Fiche Technique</span>
+
+										</div>
+									</section>
+								</div>
+
+								<div id="iconAccordionOne" class="collapse" aria-labelledby="headingOne3" data-bs-parent="#iconsAccordion">
+									<div class="card-body">
+
+										<table class="table table-bordered">
+											<tbody>
+
+												{% if  product.productDetail.etat %}
+													<tr>
+														<th class="w-25">ÉTAT</th>
+														<td>{{ product.productDetail.etat }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.type %}
+													<tr>
+														<th>TYPE DE PRODUIT</th>
+														<td>{{ product.type }}</td>
+													</tr>
+												{% endif %}
+
+												{% if product.productDetail.marque %}
+													<tr>
+														<th>MARQUE</th>
+														<td>{{ product.productDetail.marque }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.modele %}
+													<tr>
+														<th>MODÈLE</th>
+														<td>{{ product.productDetail.modele }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.processeur %}
+													<tr>
+														<th>PROCESSEUR</th>
+														<td>{{ product.productDetail.processeur }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.ram %}
+													<tr>
+														<th>RAM</th>
+														<td>{{ product.productDetail.ram }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.stockage %}
+													<tr>
+														<th>STOCKAGE</th>
+														<td>{{ product.productDetail.stockage }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.carteGraphique %}
+													<tr>
+														<th>CARTES GRAPHIQUE</th>
+														<td>{{ product.productDetail.carteGraphique }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.osInstalle %}
+													<tr>
+														<th>OS INSTALLÉ</th>
+														<td>{{ product.productDetail.osInstalle }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.tailleEcran %}
+													<tr>
+														<th>TAILLE DE L’ÉCRAN</th>
+														<td>{{ product.productDetail.tailleEcran }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.resolution %}
+													<tr>
+														<th>RÉSOLUTION</th>
+														<td>{{ product.productDetail.resolution }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.claviers %}
+													<tr>
+														<th>CLAVIER</th>
+														<td>{{ product.productDetail.claviers }}</td>
+													</tr>
+												{% endif %}
+
+												{% if product.productDetail.webcam %}
+													<tr>
+														<th>WEBCAM</th>
+														<td>{{ product.productDetail.webcam }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.connexionWifi %}
+													<tr>
+														<th>CONNEXION WI-FI</th>
+														<td>{{ product.productDetail.connexionWifi }}</td>
+													</tr>
+												{% endif %}
+
+												{% if product.productDetail.lecteurOption %}
+													<tr>
+														<th>LECTEUR OPTIQUE</th>
+														<td>{{ product.productDetail.lecteurOption }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.ports %}
+													<tr>
+														<th>PORTS</th>
+														<td class="text-start">
+															{{ product.productDetail.ports|raw }}
+														</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.dimension %}
+													<tr>
+														<th>DIMENSIONS</th>
+														<td>{{ product.productDetail.dimension }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.poids %}
+													<tr>
+														<th>POIDS</th>
+														<td>{{ product.productDetail.poids }}</td>
+													</tr>
+												{% endif %}
+
+
+												{% if product.productDetail.fournisAvec %}
+													<tr>
+														<th>FOURNIS AVEC</th>
+														<td>{{ product.productDetail.fournisAvec }}</td>
+													</tr>
+												{% endif %}
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+
+							</div>
+							<!-- card -->
+
+						</div>
+						<!-- accordion -->
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	{% endif %}
+
+
 {% endblock %}
-
-
